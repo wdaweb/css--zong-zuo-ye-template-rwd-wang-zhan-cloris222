@@ -1,0 +1,3649 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/all.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 通用類別 */
+      * {
+        box-sizing: border-box;
+        list-style: none;
+        font-family: 'Inter', sans-serif;
+      }
+
+      p {
+        font-family: 'Inter', sans-serif;
+      }
+      body,
+      html {
+        width: 100%;
+        background-color: rgb(6, 28, 35);
+      }
+      body {
+        display: flex;
+        flex-flow: column wrap;
+        background: linear-gradient(180deg, rgba(22, 28, 43, 0.1) ,rgba(22, 28, 43, 0.1)),url(./images/stars-1654074.jpg);
+        background-size: contain;
+        background-attachment: fixed;
+      }
+
+      .w-100 {
+        width: 100%;
+      }
+      .container-fluid {
+        width: 100%;
+      }
+
+      .margin-right-half{
+        margin-right: 0.5rem;
+      }
+
+      .margin-right-1{
+        margin-right: 1rem;
+      }
+
+      .margin-right-2{
+        margin-right: 2rem;
+      }
+
+      .bg-primary {
+        background-color: rgba(12, 60, 76, 0.8);
+      }
+      /* .bg-second {
+        background-color: rgb(6, 28, 35);
+      } */
+      .bg-black {
+        background-color: rgb(0, 0, 0);
+      }
+      .text-white {
+        color: #fff;
+      }
+      .text-gray {
+        color: darkgray;
+      }
+      .text-gold{
+        color:goldenrod
+      }
+
+      .btn {
+        background: linear-gradient(180deg, yellow, rgb(227, 160, 46));
+        width: 90px;
+        height: 30px;
+        font-size: 4px;
+        padding: 0.2rem;
+        font-weight: bolder;
+        border: none;
+      }
+
+      .btn:hover{
+        background: black;
+        color: white;
+        cursor: pointer;
+      }
+
+      /* 左右icon圓圈 */
+      /* .left-right-icons::before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        position: absolute;
+      }
+
+      .left-right-icons::after {
+        content: '';
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        position: absolute;
+      } */
+
+      /* bg_icon */
+      .bg_icon {
+        width: 25px;
+        height: 25px;
+        background-color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 5px;
+        text-align: center;
+        line-height: 25px;
+      }
+      /* ------------------------------------------------- */
+      
+      /* pre_nav_bar */
+      .pre_nav_bar{
+        display: none;
+      }
+      .pre_nav_bar .row{
+       width:90%;
+       margin: auto;
+       display:flex;
+       justify-content: space-between;
+       align-items: center;
+       font-family:'Inter', sans-serif ;
+      }
+
+      .pre_nav_bar .row .col{
+        width: 50%;
+        display: flex;
+        padding: 1rem;
+      }
+
+      .pre_nav_bar .row .col:nth-of-type(2){
+       justify-content: end;
+      }
+
+      .pre_nav_bar .col .col-items{
+        display: flex;
+      }
+
+      .pre_nav_bar .col .col-compare,.pre_nav_bar .col .col-wishlist{
+        justify-content: end;
+      }
+
+      /* 至頂按鈕 */
+      .toTopBtn{
+        position:fixed;
+        top:93%;
+        left:85%;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid #333;
+        z-index:2000
+      }
+      .toTopBtn:hover .fa-chevron-up{
+        color: #fff;
+      }
+
+
+      /* 導覽列 */
+      .nav_bar {
+        position: fixed;
+        z-index: 1000;
+      }
+      /* .nav_bar .container {
+        position: fixed;
+      } */
+
+      .nav_bar .row {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nav_bar .col {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        padding: 0 1rem;
+      }
+
+      .nav_bar .col .menulist{
+        display:none;
+      }
+      .nav_bar .col .menuicon {
+        padding-right: 20px;
+      }
+      .nav_bar .col .login_icon {
+        padding-right: 20px;
+      }
+      .logo {
+        padding-top: 5px;
+        width: 160px;
+      }
+
+      .login-text,.login-text-icon,.shoppingcart-text{
+        display:none
+      }
+
+      /* 搜尋欄 */
+      .search_bar {
+        margin-top: 57px;
+      }
+
+      .search_bar .col {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        width: 90%;
+        margin: auto;
+        display: flex;
+      }
+
+      .search_bar .col:nth-of-type(2){
+        display: none;
+      }
+
+      .search_bar .col input {
+        width: 92%;
+        height: 40px;
+        border:3px solid goldenrod
+      }
+      .search_bar .search_icon {
+        font-size: 20px;
+        text-align: center;
+        line-height: 40px;
+        width: 8%;
+        height: 40px;
+        background: linear-gradient(225deg, yellow, rgb(227, 160, 46));
+        border: 0;
+      }
+
+      /* 篩選器 */
+      .filter .col {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        width: 90%;
+        margin: auto;
+        position: relative;
+      }
+
+      .filter .col:nth-of-type(2){
+        display: none;
+      }
+      .filter .filter_box {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+      }
+
+      /* section01 卡片(read more) */
+      .section01 .col {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        width: 90%;
+        margin: auto;
+        position: relative;
+      }
+
+      .section01 .col .card {
+        height: 200px;
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url(./images/image2.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+      }
+      .section01 .card_text {
+        padding-top: 30px;
+        padding-left: 50px;
+        line-height: 1.5;
+      }
+      .section01 .card_text .subtitle {
+        font-size: 6px;
+      }
+      .section01 .card_text .card_title {
+        font-size: 20px;
+        font-weight: bolder;
+      }
+      .section01 .card .btn {
+        margin-left: 50px;
+        margin-top: 20px;
+      }
+
+      /* section02 輪播(deal of the day) */
+      .section02 .area1 {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid lightgray;
+        position: relative;
+      }
+
+      .section02 .area1::after {
+        content: '';
+        width: 25%;
+        border-bottom: 2px solid goldenrod;
+        position: absolute;
+        top: 99%;
+        left: 0;
+      }
+
+      .section02 .area1 .col {
+        width: 80%;
+        padding: 1rem 0;
+        position: relative;
+      }
+
+      .section02 .area1 .col:nth-of-type(2) {
+        width: 20%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .section02 .area1 .col .title {
+        font-size: 24px;
+        font-weight: bolder;
+      }
+
+
+      .section02 .area2 {
+        width: 90%;
+        margin: auto;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .section02 .area2 .col {
+        width: 48%;
+        padding-bottom: 1rem;
+      }
+
+      .section02 .area2 .col .card {
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-flow: column wrap;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section02 .col .card::after {
+        content: '-25%';
+        width: 80px;
+        height: 20px;
+        background: linear-gradient(180deg, yellow, rgb(227, 160, 46));
+        transform: rotate(-45deg);
+        position: absolute;
+        top: 3%;
+        left: -10%;
+        text-align: center;
+        line-height: 20px;
+        font-size: 6px;
+        font-weight: bolder;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .section02 .card .card-img {
+        width: 100%;
+        height: 60%;
+      }
+
+
+      .section02 .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        filter: brightness(0.8);
+      }
+
+      .section02 .card .card-icons {
+        width: 10%;
+        display: flex;
+        flex-flow: column wrap;
+        position: absolute;
+        top: 0.3%;
+        right: 0.5%;
+      }
+
+      .section02 .card .card-stars {
+        padding-top: 1rem;
+        font-size: 12px;
+        color: goldenrod;
+      }
+
+      .section02 .card .card-text {
+        padding-top: 1rem;
+      }
+
+      .section02 .card .card-text-price {
+        padding-top: 1rem;
+      }
+
+      .section02 .area2 .col:nth-of-type(3),
+      .section02 .area2 .col:nth-of-type(4),
+      .section02 .area2 .col:nth-of-type(5){
+        display: none;
+      }
+
+      /* section03 滿版卡片(extra $100) */
+      .section03 .row {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 1rem;
+      }
+      .section03 .row .col {
+        width: 80%;
+        text-align: center;
+        padding-top: 1rem;
+      }
+
+      .section03 .row .col:nth-of-type(1){
+        display:none;
+      }
+
+      .section03 .col .text {
+        font-size: 20px;
+        line-height: 1.5;
+        font-weight: bolder;
+        letter-spacing: 1.5px;
+      }
+
+      .section03 .col .btn {
+        width: 120px;
+        height: 35px;
+      }
+
+      /* section04 促銷卡片*2 */
+      .section04 {
+        padding-top: 1rem;
+      }
+      .section04 .row {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-flow: column wrap;
+      }
+
+      .section04 .row .btn {
+        width: 120px;
+        height: 35px;
+      }
+
+      .section04 .area1 {
+        margin-top: 1rem;
+        height: 150px;
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url(./images/image7.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 25%;
+      }
+
+      .section04 .row .col {
+        width: 100%;
+        padding-left: 1rem;
+      }
+
+      .section04 .row .col:nth-of-type(1) {
+        padding-top: 1rem;
+      }
+
+      .section04 .area1 .col .text {
+        font-size: 20px;
+        font-weight: bolder;
+        line-height: 1.5;
+      }
+
+      .section04 .area2 {
+        margin-top: 1rem;
+        height: 250px;
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url(./images/image6.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 25%;
+      }
+
+      .section04 .area2 .col .text-subtitle {
+        font-size: 14px;
+        line-height: 2;
+      }
+      .section04 .area2 .col .text-title {
+        font-size: 20px;
+        font-weight: bolder;
+        line-height: 2;
+      }
+      .section04 .area2 .col:nth-of-type(2) {
+        padding-top: 2rem;
+      }
+
+      /* section05 卡片(equipment for pro gaming)+輪播 */
+      .section05 .card-area {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-flow: column wrap;
+      }
+
+      .section05 .card-area .col {
+        width: 100%;
+        height: 350px;
+        display: flex;
+        margin-top: 1rem;
+      }
+
+      .section05 .card-area .col .card {
+        width: 100%;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        padding-top: 2rem;
+      }
+
+      .section05 .card-area .card .card-title {
+        text-align: center;
+        font-size: 18px;
+        line-height: 2;
+        margin-bottom: 2rem;
+      }
+
+      .section05 .card-area .card .card-text {
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+      }
+
+      .section05 .card-area .card .btn {
+        width: 120px;
+        height: 35px;
+      }
+      /* 輪播 */
+      .section05 .area1 {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid lightgray;
+        position: relative;
+      }
+
+      .section05 .area1::after {
+        content: '';
+        width: 25%;
+        border-bottom: 2px solid goldenrod;
+        position: absolute;
+        top: 99%;
+        left: 0;
+      }
+
+      .section05 .area1 .col {
+        width: 80%;
+        padding: 1rem 0;
+        position: relative;
+      }
+
+      .section05 .area1 .col .title {
+        font-size: 24px;
+        font-weight: bolder;
+      }
+
+      .section05 .area1 .col:nth-of-type(2) {
+        width: 20%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .section05 .area2 {
+        width: 90%;
+        margin: auto;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .section05 .area2 .col {
+        width: 48%;
+        padding-bottom: 1rem;
+      }
+
+      .section05 .area2 .col:nth-of-type(3),
+      .section05 .area2 .col:nth-of-type(4){
+        display: none;
+      }
+
+      .section05 .area2 .col .card {
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-flow: column wrap;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section05 .area2 .col .card::after {
+        content: '-13%';
+        width: 80px;
+        height: 20px;
+        background: linear-gradient(180deg, yellow, rgb(227, 160, 46));
+        transform: rotate(-45deg);
+        position: absolute;
+        top: 3%;
+        left: -10%;
+        text-align: center;
+        line-height: 20px;
+        font-size: 6px;
+        font-weight: bolder;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .section05 .card .card-img {
+        width: 100%;
+        height: 60%;
+      }
+
+      .section05 .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        filter: brightness(0.8);
+      }
+
+      .section05 .card .card-icons {
+        width: 10%;
+        display: flex;
+        flex-flow: column wrap;
+        position: absolute;
+        top: 0.3%;
+        right: 0.5%;
+      }
+
+      .section05 .card .card-stars {
+        padding-top: 1rem;
+        font-size: 12px;
+        color: goldenrod;
+      }
+
+      .section05 .card .card-text {
+        padding-top: 1rem;
+      }
+      .section05 .card .card-text-price {
+        padding-top: 1rem;
+      }
+
+      /* section06 卡片(about our company) */
+      .section06 .row {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-flow: column wrap;
+        margin-top: 1rem;
+        padding-bottom: 1rem;
+
+      }
+
+      .section06 .row .col {
+        width: 100%;
+      }
+
+      .section06 .img-area {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 1rem;
+      }
+
+      .section06 .img-area img {
+        width: 90%;
+        margin: 1rem 5% ;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 0;
+        filter: brightness(0.8);
+      }
+
+      .section06 .text-area {
+        width: 100%;
+        margin-top: 1rem;
+        padding-left: 1rem;
+      }
+
+      .section06 .text-area .text-title {
+        font-size: 24px;
+        font-weight: bolder;
+      }
+
+      .section06 .text-area .text-medium {
+        font-size: 16px;
+        margin-top: 2rem;
+        line-height: 1.5;
+      }
+
+      .section06 .text-area .text-list {
+        margin-top: 2rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+      }
+
+      .section06 .text-list li {
+        height: 30px;
+      }
+
+      .section06 .text-list .text-list-icon {
+        color: goldenrod;
+        margin-right: 1rem;
+      }
+
+      .section06 .btn-area {
+        margin-top: 2rem;
+      }
+
+      .section06 .btn-area .btn {
+        width: 120px;
+        height: 35px;
+      }
+
+      /* section07 卡片(equipment for pro gaming)+輪播 */
+      .section07 .card-area {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-flow: column wrap;
+      }
+
+      .section07 .card-area .col {
+        width: 100%;
+        height: 350px;
+        display: flex;
+        margin-top: 1rem;
+      }
+
+      .section07 .area2 .col:nth-of-type(3),
+      .section07 .area2 .col:nth-of-type(4){
+        display: none;
+      }
+
+      .section07 .card-area .col .card {
+        width: 100%;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        padding-top: 2rem;
+      }
+
+      .section07 .card-area .card .card-title {
+        text-align: center;
+        font-size: 18px;
+        line-height: 2;
+        margin-bottom: 2rem;
+      }
+
+      .section07 .card-area .card .card-text {
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+      }
+
+      .section07 .card-area .card .btn {
+        width: 120px;
+        height: 35px;
+      }
+      /* 輪播 */
+      .section07 .area1 {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid lightgray;
+        position: relative;
+      }
+
+      .section07 .area1::after {
+        content: '';
+        width: 25%;
+        border-bottom: 2px solid goldenrod;
+        position: absolute;
+        top: 99%;
+        left: 0;
+      }
+
+      .section07 .area1 .col {
+        width: 80%;
+        padding: 1rem 0;
+        position: relative;
+      }
+
+      .section07 .area1 .col .title {
+        font-size: 24px;
+        font-weight: bolder;
+      }
+
+      .section07 .area1 .col:nth-of-type(2) {
+        width: 20%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+
+      .section07 .area2 {
+        width: 90%;
+        margin: auto;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .section07 .area2 .col {
+        width: 48%;
+        padding-bottom: 1rem;
+      }
+
+      .section07 .area2 .col .card {
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-flow: column wrap;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section07 .area2 .col .card::after {
+        content: '-5%';
+        width: 80px;
+        height: 20px;
+        background: linear-gradient(180deg, yellow, rgb(227, 160, 46));
+        transform: rotate(-45deg);
+        position: absolute;
+        top: 3%;
+        left: -10%;
+        text-align: center;
+        line-height: 20px;
+        font-size: 6px;
+        font-weight: bolder;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .section07 .card .card-img {
+        width: 100%;
+        height: 60%;
+      }
+
+      .section07 .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        filter: brightness(0.8);
+      }
+
+      .section07 .card .card-icons {
+        width: 10%;
+        display: flex;
+        flex-flow: column wrap;
+        position: absolute;
+        top: 0.3%;
+        right: 0.5%;
+      }
+
+      .section07 .card .card-stars {
+        padding-top: 1rem;
+        font-size: 12px;
+        color: goldenrod;
+      }
+
+      .section07 .card .card-text {
+        padding-top: 1rem;
+      }
+      .section07 .card .card-text-price {
+        padding-top: 1rem;
+      }
+
+      /* section08 輪播按鈕 */
+      .section08 .row {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 2rem;
+      }
+      .section08 .row .col {
+        width: 48%;
+        height: 70px;
+      }
+
+      .section08 .row .col:nth-of-type(3),
+      .section08 .row .col:nth-of-type(4),
+      .section08 .row .col:nth-of-type(5),
+      .section08 .row .col:nth-of-type(6){
+        display: none;
+      }
+
+      .section08 .col .carousel-btn {
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        color: lightgray;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid lightgray;
+        text-align: center;
+        line-height: 60px;
+        background-color: transparent;
+      }
+
+      .section08 .col .carousel-btn:hover{
+        color: goldenrod;
+        border-color: goldenrod;
+        cursor: pointer;
+      }
+
+      /* section09 輪播(from the blog)*/
+      .section09 .area1 {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid lightgray;
+        position: relative;
+      }
+
+      .section09 .area1::after {
+        content: '';
+        width: 25%;
+        border-bottom: 2px solid goldenrod;
+        position: absolute;
+        top: 99%;
+        left: 0;
+      }
+
+      .section09 .area1 .col {
+        width: 80%;
+        padding: 1rem 0;
+        position: relative;
+      }
+
+      .section09 .area1 .col .title {
+        font-size: 24px;
+        font-weight: bolder;
+      }
+
+      .section09 .area1 .col:nth-of-type(2) {
+        width: 20%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+
+      /* 輪播 */
+      .section09 .area2 {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-flow: column wrap;
+        margin-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      .section09 .col-img {
+        width: 100%;
+        height: 350px;
+      }
+
+      .section09 .col-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 75% 50%;
+      }
+
+      .section09 .col-text {
+        margin: 1rem 0;
+        position: relative;
+      }
+
+      .section09 .col-text::after {
+        content: '';
+        width: 20px;
+        border-bottom: 2px solid goldenrod;
+        position: absolute;
+        top: 10%;
+        left: 0;
+      }
+
+      .section09 .col-text .text-date {
+        font-size: 6px;
+        margin-bottom: 1rem;
+        padding-left: 30px;
+      }
+      .section09 .col-text .text-title {
+        letter-spacing: 1px;
+      }
+
+      .section09 .col-btn .btn {
+        width: 120px;
+        height: 35px;
+        font-size: 14px;
+      }
+
+      .section09 .area2 .card:nth-of-type(2){
+        display: none;
+      }
+
+      /* footer */
+      .footer .row {
+        display: flex;
+        flex-flow: column wrap;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .footer .area1 {
+        width: 90%;
+        margin: auto;
+        border-bottom: 1px solid lightgray;
+        padding-top: 1.5rem;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .footer .area1 .col {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .footer .area1 .col-title {
+        font-size: 20px;
+        font-weight: bolder;
+        letter-spacing: 1px;
+        line-height: 1.5;
+        display: flex;
+        justify-content: center;
+      }
+
+      .footer .area1 .title-icon {
+        font-size: 30px;
+        margin-right: 1rem;
+      }
+
+      .footer .area1 .col-input{
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        margin-bottom: 0;
+      }
+
+      .footer .area1 .col-input input{
+        margin-bottom: 1rem;
+      }
+
+      .footer .area1 .col-input .btn{
+        width: 50%;
+      }
+
+      .footer .area1 .col-society{
+        display:none;
+      }
+
+      .footer .area2 {
+        width: 100%;
+        margin: auto;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        align-items: center;
+      }
+
+      .footer .area2 .col {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 1.5rem;
+        position: relative;
+      }
+
+      .footer .area2 .col::after {
+        content: '';
+        width: 40px;
+        border-bottom: 3px solid goldenrod;
+        position: absolute;
+        top: 68%;
+        left: 0;
+      }
+
+      .footer .area2 .col ~ .col {
+        margin-top: 0.5rem;
+      }
+
+      .footer .col-input{
+        width: 100%;
+      }
+
+      .footer .col-input input{
+        width: 100%;
+        height: 50px;
+        border: 3px solid goldenrod;
+      }
+
+      .footer .area2 .col-info{
+        display:none
+       }
+
+      .footer .area3{
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        border-top: 1px solid lightgray;
+      }
+
+      .footer .col-copyright{
+        width:100%;
+        margin: 1rem 0;
+        font-size: 12px;
+        line-height: 12px;
+      }
+      .footer .col-icons{
+        width: 80%;
+        margin: auto;
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom:2rem ;
+      }
+
+      .footer .col-icons .icon-bankcard{
+        width: 12%;
+      }
+
+      .footer .col-icons .icon-bankcard img{
+        width: 100%;
+      }
+
+      /* 響應式-------------------------------------------------------- */
+      @media (min-width: 768px){
+
+      /* 搜尋欄 */
+      .search_bar {
+        margin-top: 114px;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .search_bar .row{
+        width: 90%;
+        margin: auto;
+        display: flex;
+      }
+
+      .search_bar .col:nth-of-type(1){
+        width: 30;
+      }
+
+      .search_bar .col:nth-of-type(2){
+        width: 70%;
+        display:flex;
+        justify-content: end;
+      }
+
+      .search_bar .col input{
+        width: 70%;
+      }
+
+      .search_bar .col .search_icon{
+        width: 12%;
+      }
+
+      .search_bar .col .col-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .search_bar .col .col-item .item-text{
+        width: 100px;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .search_bar .col .col-item .item-icon{
+        font-size: 20px;
+        margin-right: 2rem;
+        position: relative;
+        text-align: center;
+      }
+
+      .search_bar .col .col-item .item-icon::after{
+        content: '';
+        width: 40px;
+        height: 40px;
+        border: 2px dashed white;
+        border-radius: 50%;
+        position: absolute;
+        top: -13px;
+        left:-14px;
+      }
+
+      /* section01卡片 */
+      .section01 .col .card{
+        width: 100%;
+        height: 347px;
+       }
+
+       .section01 .card_text .subtitle {
+        font-size: 14px;
+        font-weight: bolder;
+      }
+      .section01 .card_text .card_title {
+        font-size: 36px;
+      }
+      .section01 .card .btn {
+       width: 120px;
+       height: 40px;
+      }
+
+      /* section02輪播 */
+      .section02 .area1::after{
+        width: 15%;
+      }
+
+      .section02 .area1 .col:nth-of-type(2) {
+        justify-content: end;
+      }
+
+      .section02 .area1 .col:nth-of-type(2) .fa-arrow-right{
+        margin-left:2rem;
+      }
+
+
+      .section02 .area2 .col{
+        width: 32%; 
+        margin-right: 2%;
+      }
+
+      .section02 .area2 .col:nth-of-type(3){
+        display:flex;
+        margin: 0;
+      }
+
+      .section02 .area2 .col .card{
+        width:100%;
+        height: 400px;
+      }
+
+      .section02 .card .card-icons{
+        top: 0;
+        left: 84%;
+      }
+
+      .section02 .card .card-icons .bg_icon{
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+      }
+
+      /* section03 */
+      .section03 .row{
+      width: 90%;
+      margin:auto;
+      flex-flow:row nowrap;
+      justify-content:center;
+      padding:3rem 0;
+      }
+
+
+      .section03 .row .col:nth-of-type(1){
+        display:block;
+        width: 8%;
+        font-size: 30px;
+        text-align: center;
+      }
+
+      .section03 .row .col:nth-of-type(2){
+        width: 75%;
+      }
+
+      .section03 .col .text{
+        font-size: 18px;
+        text-align: left;
+      }
+
+      .section03 .col .btn{
+        width: 80px;
+      }
+
+      .section03 .row .col:nth-of-type(3){
+        width: 15%;
+        text-align: left;
+        margin-left: 2%;
+      }
+
+      /* section04 促銷卡片*2 */
+
+      .section04{
+        margin-top: 2rem;
+        margin-bottom:2rem;
+      }
+      .section04 .container{
+        display:flex;
+        width: 90%;
+        margin: auto;
+        justify-content: space-between;
+      }
+
+      .section04 .row{
+        justify-content: center;
+        align-items: center;
+      }
+
+      .section04 .area1{
+        width: 62%;
+        height: 200px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .section04 .area2{
+        width: 36%;
+        height: 200px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .section04 .area1 .col .text{
+        font-size: 24px;
+        line-height: 1.2;
+        margin-top: -9%;
+        margin-bottom: 2rem;
+      }
+
+      .section04 .area2 .col .text{
+        margin-top: -18%;
+      }
+
+      .section04 .area2 .col .text-subtitle {
+        font-size: 16px;
+      }
+      .section04 .area2 .col .text-title {
+        font-size: 24px;
+        margin-top: -5%;
+      }
+
+      /* section05卡片(equipment for pro gaming)+輪播 */
+      .section05 .container{
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .section05 .area1::after{
+        width: 15%;
+      }
+
+      .section05 .container .card-area{
+        width: 29%;
+        padding: 0;
+        margin: 0;
+        margin-right: 2%;
+      }
+
+      .section05 .container .card-area .col{
+       height:400px;
+      }
+
+      .section05 .card-area .col .card{
+       align-items:start;
+       padding-left: 1rem;
+      }
+
+      .section05 .card-area .card .card-title{
+        text-align:left;
+        font-size:24px;
+        font-weight: bolder;
+        line-height: 1.5;
+      }
+
+      .section05 .card-area .card .card-text {
+        text-align: left;
+      }
+
+      .section05 .area1 .col:nth-of-type(2) {
+        justify-content: end;
+      }
+
+      .section05 .area1 .col:nth-of-type(2) .fa-arrow-right{
+        margin-left:2rem;
+      }
+
+      .section05 .container .carousel-area{
+        width: 69%;
+        display: flex;
+        flex-flow: column wrap;
+      }
+
+      .section05 .carousel-area .area1{
+        width: 100%; 
+      }
+
+      .section05 .carousel-area .area2{
+        width: 100%;
+      }
+
+      .section05 .area2 .col{
+        width: 32%; 
+        margin-right: 2%;
+      }
+
+      .section05 .area2 .col:nth-last-of-type(2){
+        margin-right: 0;
+      }
+
+      .section05  .area2 .col:nth-of-type(3){
+        display: flex;
+      }
+
+      .section05 .area2 .col .card{
+        height: 400px;
+      }
+
+      .section05 .col:nth-of-type(odd) .card .card-img img{
+        object-position: 70% 50%;
+      }
+      
+      .section05 .area2 .col .card::after{
+        top: 2%;
+        left: -15%;
+      }
+
+      .section05 .card .card-icons{
+        top: 0;
+        left: 77%;
+      }
+
+      .section05 .card .card-icons .bg_icon{
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+      }
+
+      .section05 .area2 .col:nth-last-of-type(1){
+        margin: 0;
+      }
+
+      /* section06 卡片(about our company) */
+      
+      .section06 .row{
+        width: 90%;
+        margin: auto;
+        flex-flow:row nowrap;
+        padding-bottom: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .section06 .row .col{
+        width: 50%;
+      }
+
+
+      .section06 .row .img-area{
+       width: 50%;
+       margin-top: 1rem;
+       height: 500px;
+      }
+
+      .section06 .row .img-area img{
+        width: 90%;
+        height: 50%;
+        object-fit: cover;
+        object-position: 50% 40%;
+      }
+
+      .section06 .row .text-area{
+        width: 50%;
+        height: 500px;
+        margin-top: 2.5rem;
+      }
+      
+      .section06 .row .text-area .text-title,
+      .section06 .row .text-area .text-medium{
+        margin-bottom: 1rem;
+      }
+      .section06 .text-area .text-list li{
+        line-height: 2;
+        font-size: 16px;
+        margin-bottom: 2rem;
+      }
+      .section06 .text-area .text-list{
+        padding-bottom: 2rem;
+      }
+
+      .section06 .btn-area {
+        margin-top: 0;
+      }
+
+      /* section07卡片(equipment for pro gaming)+輪播 */
+      .section07 .container{
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .section07 .area1::after{
+        width: 15%;
+      }
+
+      .section07 .container .card-area{
+        width: 29%;
+        padding: 0;
+        margin: 0;
+        margin-right: 2%;
+      }
+
+      .section07 .container .card-area .col{
+       height:400px;
+      }
+
+      .section07 .card-area .col .card{
+       align-items:start;
+       padding-left: 1rem;
+      }
+
+      .section07 .card-area .card .card-title{
+        text-align:left;
+        font-size:24px;
+        font-weight: bolder;
+        line-height: 1.5;
+      }
+
+      .section07 .card-area .card .card-text {
+        text-align: left;
+      }
+
+      .section07 .area1 .col:nth-of-type(2) {
+        justify-content: end;
+      }
+
+      .section07 .area1 .col:nth-of-type(2) .fa-arrow-right{
+        margin-left:2rem;
+      }
+
+      .section07 .container .carousel-area{
+        width: 69%;
+        display: flex;
+        flex-flow: column wrap;
+      }
+
+      .section07 .carousel-area .area1{
+        width: 100%; 
+      }
+
+      .section07 .carousel-area .area2{
+        width: 100%;
+      }
+
+      .section07 .area2 .col{
+        width: 32%; 
+        margin-right: 2%;
+      }
+
+      .section07 .area2 .col:nth-last-of-type(2){
+        margin-right: 0;
+      }
+
+      .section07  .area2 .col:nth-of-type(3){
+        display: flex;
+      }
+
+      .section07 .area2 .col .card{
+        height: 400px;
+      }
+
+      .section07 .col:nth-of-type(odd) .card .card-img img{
+        object-position: 70% 50%;
+      }
+
+      .section07 .col:nth-of-type(even) .card .card-img img{
+        object-position: 20% 50%;
+      }
+
+      .section07 .area2 .col .card::after{
+        top: 2%;
+        left: -15%;
+      }
+
+      .section07 .card .card-icons{
+        top: 0;
+        left: 77%;
+      }
+
+      .section07 .card .card-icons .bg_icon{
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+      }
+
+      .section07 .area2 .col:nth-last-of-type(1){
+        margin: 0;
+      }
+
+      /* section08輪播按鈕 */
+
+      .section08 .row{
+        width: 90%;
+      }
+
+      .section08 .row .col{
+        height: 50px;
+        margin-right: 2%;
+      }
+
+      .section08 .row .col .carousel-btn{
+        font-size: 20px;
+        line-height: 45px;
+      }
+
+      .section08 .row .col:nth-of-type(3),
+      .section08 .row .col:nth-of-type(4),
+      .section08 .row .col:nth-of-type(5)
+      {
+        display: block;
+      }
+
+      .section08 .row .col:nth-last-of-type(2){
+        margin: 0;
+      }
+
+      /* section09輪播(from the blog) */
+
+     .section09{
+      margin-bottom: 2rem;
+     }
+     .section09 .row{
+      width: 90%;
+     }
+
+     .section09 .area1{
+      margin-bottom:2rem;
+     }
+
+     .section09 .area1 .col:nth-of-type(2) {
+        justify-content: end;
+      }
+
+      .section09 .area1 .col:nth-of-type(2) .fa-arrow-right{
+        margin-left:2rem;
+      }
+
+
+     .section09 .area1::after{
+      width: 5%;
+     }
+
+     .section09 .area2{
+      flex-flow:row nowrap
+     }
+
+     .section09 .area2 .card{
+      width: 50%;
+      display:flex;
+      flex-flow: column wrap;
+     }
+
+     .section09 .area2 .card:nth-of-type(2){
+        display: flex;
+      }
+
+
+     .section09 .col-img {
+        width: 90%;
+        height: 300px;
+      }
+
+
+     .section09 .col-text .text-date{
+      font-size: 14px;
+      font-weight: bolder;
+      letter-spacing: 0.5px;
+     }
+
+     .section09 .col-text .text-title {
+        width:90%;
+        font-weight: bolder;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+      }
+
+      
+      /* footer */
+      
+      .footer .area1{
+        width: 90%;
+        margin: auto;
+      }
+      .footer .area1 .col-title {
+       width: 100%;
+       font-size: 24px;
+      }
+
+      .footer .area1 .col-input{
+        width: 50%;
+        flex-flow:row nowrap
+      }
+
+      .footer .area1 .col-input .btn{
+        width: 50%;
+        border:0;
+      }
+
+      .footer .col-copyright{
+        margin-top: 2rem;
+        font-size:14px;
+      }
+
+      .footer .col-icons{
+        width: 50%;
+       }
+
+
+
+      }
+      
+      
+      @media (min-width: 1200px) {
+      
+      /* 至頂按鈕 */
+      .toTopBtn{
+        top:93%;
+        left:96%;
+        width: 35px;
+        height: 35px;
+        border:0;
+      }
+        
+      /* pre_nav_bar */
+      .pre_nav_bar{
+        display: block;
+      }
+
+      .pre_nav_bar .row{
+        width: 80%;
+      }
+
+      .pre_nav_bar .col-items:hover{
+        color: goldenrod;
+        cursor: pointer;
+      }
+
+      /* 導覽列 */
+      .nav_bar{
+        position: fixed;
+        top:5%;
+        height: 100px;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .nav_bar .container-fluid{
+        height: 100%;
+      }
+
+      .nav_bar .row{
+        width: 80%;
+        margin: auto;
+        height: 100%;
+      }
+
+      .nav_bar .row .col{
+        height: 100%;
+        font-size: 24px;
+      }
+
+      .nav_bar .col .menuicon{
+        display:none;
+      }
+
+      .nav_bar .logo{
+        width: 200px;
+      }
+
+      .nav_bar .col .menulist{
+        display: flex;
+      }
+
+      .nav_bar .menulist li{
+        font-size: 16px;
+        margin-right: 2rem;
+        line-height: 16px;
+        text-align:center;
+      }
+
+      .nav_bar .menulist li:hover{
+        color: goldenrod;
+        cursor: pointer;
+      }
+
+      .nav_bar .menulist li .fa-chevron-down{
+        margin-left:0.5rem;
+        font-size: 12px;
+      }
+
+      .nav_bar .col:nth-of-type(3){
+        font-size: 16px;
+      }
+
+      .shoppingcart-text{
+        position: relative;
+      }
+
+      .shoppingcart-text::after{
+        content:'0';
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        color: black;
+        text-align: center;
+        line-height: 20px;
+        font-weight: bolder;
+        background: linear-gradient(180deg, yellow, rgb(227, 160, 46));
+        position: absolute;
+        top: -14%;
+        left: 112%;
+      }
+
+      .login-text,.login-text-icon,.shoppingcart-text{
+        display:block
+      }
+
+      /* 搜尋欄 */
+
+      .search_bar {
+        margin-top: 114px;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .search_bar .row{
+        width: 80%;
+        margin: auto;
+        display: flex;
+      }
+
+      .search_bar .col:nth-of-type(1){
+        width: 50%;
+      }
+
+      .search_bar .col:nth-of-type(2){
+        display:flex;
+        justify-content: end;
+      }
+
+      .search_bar .col .col-item{
+        display: flex;
+        margin-right: 3rem;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .search_bar .col .col-item .item-text{
+        width: 100px;
+        font-size: 14px;
+      }
+
+      .search_bar .col .col-item .item-icon{
+        font-size: 28px;
+        margin-right: 2rem;
+        position: relative;
+        text-align: center;
+      }
+
+      .search_bar .col .col-item .item-icon::after{
+        content: '';
+        width: 50px;
+        height: 50px;
+        border: 2px dashed white;
+        border-radius: 50%;
+        position: absolute;
+        top: -13px;
+        left:-14px;
+      }
+
+      /* 篩選器+卡片 */
+      .filter_card{
+        width: 80%;
+        margin: auto;
+        display: flex;
+        font-family: 'Inter', sans-serif;
+
+      }
+
+      /* 篩選器 */
+
+      .filter_card .filter{
+       width: 20%;
+       margin-bottom: 4rem;
+      }
+      .filter_card .filter .col{
+        width: 100%;
+        margin: 0;
+      }
+
+      .filter_card .filter .col:nth-of-type(2){
+        display: block;
+      }
+
+      .filter_card .filter .filter_box{
+      flex-direction: row-reverse;
+      justify-content: start;
+      }
+
+      .filter .filter_box .filter_icon{
+        margin-right:1rem
+      }
+
+      .filter_card .filter .filter-list{
+        width: 90%;
+        margin-left: 5%;
+      }
+
+      .filter-list .list-item{
+        height: 30px;
+        border-bottom: 1px solid lightgray;
+        margin-top: 1rem;
+      }
+
+      .filter-list .list-item:nth-of-type(2){
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .filter-list .list-item:nth-last-of-type(1){
+        border: 0;
+      }
+
+       /* 卡片 */
+       .filter_card .section01{
+        width: 80%;
+       }
+
+       .filter_card .section01 .col{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+       }
+
+       .section01 .col .card{
+        width: 100%;
+        height: 532px;
+       }
+
+       .section01 .card_text .subtitle {
+        font-size: 14px;
+        font-weight: bolder;
+      }
+      .section01 .card_text .card_title {
+        font-size: 52px;
+      }
+      .section01 .card .btn {
+       width: 120px;
+       height: 40px;
+      }
+
+      /* 輪播 */
+      .section02 .area1{
+        width: 80%;
+      }
+
+      .section02 .area1::after{
+        content: '';
+        width: 5%;
+      }
+
+      .section02 .area1 .col:nth-of-type(2){
+        display: none;
+      }
+
+      .section02 .area2{
+        width: 80%;
+      }
+
+      .section02 .area2 .col{
+        width: 17.6%; 
+        margin-right: 3%;
+      }
+
+      .section02 .area2 .col:nth-of-type(3),
+      .section02 .area2 .col:nth-of-type(4),
+      .section02 .area2 .col:nth-of-type(5){
+        display: flex;
+      }
+
+      .section02 .area2 .col:nth-last-of-type(1){
+        margin: 0;
+      }
+
+      .section02 .area2 .col:nth-of-type(4) img{
+       object-fit: cover;
+       object-position: 80% 50%;
+      }
+
+      .section02 .area2 .col:nth-of-type(5) img{
+       object-fit: cover;
+       object-position: 70% 50%;
+      }
+
+      .section02 .area2 .col .card{
+        width:100%;
+        height: 500px;
+      }
+
+      .section02 .col .card::after{
+        top: 2%;
+        left: -8%;
+      }
+
+      .section02 .card .card-icons{
+        display: none;
+      }
+
+      /* section03 滿版卡片 */
+      .section03 .row{
+      width: 80%;
+      margin:auto;
+      flex-flow:row nowrap;
+      justify-content:center;
+      padding:2rem 0;
+      }
+
+
+      .section03 .row .col:nth-of-type(1){
+        display:block;
+        width: 15%;
+        font-size: 40px;
+        text-align: center;
+      }
+
+      .section03 .row .col:nth-of-type(2){
+        width: 70%
+      }
+
+      .section03 .col .text{
+        font-size: 36px;
+      }
+
+      .section03 .row .col:nth-of-type(3){
+        width: 15%;
+        text-align: left;
+      }
+        
+      /* section04 促銷卡片*2 */
+
+      .section04{
+        margin-top: 2rem;
+        margin-bottom:2rem;
+      }
+      .section04 .container{
+        display:flex;
+        width: 80%;
+        margin: auto;
+        justify-content: space-between;
+      }
+
+      .section04 .row{
+        justify-content: center;
+        align-items: center;
+      }
+
+      .section04 .area1{
+        width: 62%;
+        height: 350px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .section04 .area2{
+        width: 36%;
+        height: 350px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .section04 .area1 .col .text{
+        font-size: 36px;
+      }
+
+      .section04 .area2 .col .text-subtitle {
+        font-size: 18px;
+      }
+      .section04 .area2 .col .text-title {
+        font-size: 36px;
+      }
+
+      /* 卡片(equipment for pro gaming)+輪播 */
+      .section05 .container{
+        width: 80%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .section05 .area1::after{
+        width: 5%;
+      }
+
+      .section05 .container .card-area{
+        width: 18%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .section05 .container .card-area .col{
+       height: 500px;
+      }
+
+      .section05 .card-area .col .card{
+       align-items:start;
+       padding-left: 2rem;
+      }
+
+      .section05 .card-area .card .card-title{
+        text-align:left;
+        font-size:24px;
+        font-weight: bolder;
+        line-height: 1.5;
+      }
+
+      .section05 .card-area .card .card-text {
+        text-align: left;
+      }
+
+      .section05 .area1 .col:nth-of-type(2) {
+        justify-content: end;
+      }
+
+      .section05 .area1 .col:nth-of-type(2) .fa-arrow-right{
+        margin-left:2rem;
+      }
+
+      .section05 .container .carousel-area{
+        width: 80%;
+        display: flex;
+        flex-flow: column wrap;
+      }
+
+      .section05 .carousel-area .area1{
+        width: 100%; 
+      }
+
+      .section05 .carousel-area .area2{
+        width: 100%;
+      }
+
+      .section05 .area2 .col{
+        width: 23.5%; 
+        margin-right: 2%;
+      }
+
+      .section05 .area2 .col:nth-of-type(3),
+      .section05 .area2 .col:nth-of-type(4){
+        display: flex;
+      }
+
+      .section05 .area2 .col .card{
+        height: 500px;
+      }
+
+      .section05 .area2 .col .card::after{
+        top: 2%;
+        left: -8%;
+      }
+
+      .section05 .card .card-icons{
+        display: none;
+      }
+
+      .section05 .area2 .col:nth-last-of-type(1){
+        margin: 0;
+      }
+
+
+
+      /*section06 卡片(about our company) */
+      .section06 .row{
+        width: 80%;
+        margin: auto;
+        flex-flow:row nowrap
+      }
+
+      .section06 .row .col{
+        width: 50%;
+      }
+
+
+      .section06 .row .img-area{
+       width: 50%;
+       margin-top: 3rem;
+       margin-left: 3rem;
+       height: 500px;
+      }
+
+      .section06 .row .img-area img{
+        width: 90%;
+        height: 80%;
+        object-fit: cover;
+        object-position: 50% 40%;
+      }
+
+      .section06 .row .text-area{
+        width: 50%;
+        height: 500px;
+        margin-top: 4rem;
+        margin-left: 2rem;
+      }
+
+      .section06 .text-area .text-list {
+        padding-bottom: 0;
+      }
+
+      .section06 .row .text-area .text-title,
+      .section06 .row .text-area .text-medium,
+      .section06 .row .text-area .text-list{
+        margin-bottom: 3rem;
+      }
+
+
+      /* section07 卡片(equipment for pro gaming)+輪播  */
+      .section07{
+        margin-top: 2rem;
+      }
+      .section07 .container{
+        width: 80%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .section07 .area1::after{
+        width: 5%;
+      }
+
+      .section07 .container .card-area{
+        width: 18%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .section07 .container .card-area .col{
+       height: 500px;
+      }
+
+      .section07 .card-area .col .card{
+        align-items:start;
+       padding-left: 2rem;
+      }
+
+      .section07 .card-area .card .card-title{
+        text-align:left;
+        font-size:24px;
+        font-weight: bolder;
+        line-height: 1.5;
+      }
+
+      .section07 .card-area .card .card-text {
+        text-align: left;
+      }
+
+      .section07 .area1 .col:nth-of-type(2) {
+        justify-content: end;
+      }
+
+      .section07 .area1 .col:nth-of-type(2) .fa-arrow-right{
+        margin-left:2rem;
+      }
+
+
+      .section07 .container .carousel-area{
+        width: 80%;
+        display: flex;
+        flex-flow: column wrap;
+      }
+
+      .section07 .carousel-area .area1{
+        width: 100%; 
+      }
+
+      .section07 .carousel-area .area2{
+        width: 100%;
+      }
+
+      .section07 .area2 .col{
+        width: 23.5%; 
+        margin-right: 2%;
+      }
+
+      .section07 .area2 .col:nth-of-type(3),
+      .section07 .area2 .col:nth-of-type(4){
+        display: flex;
+      }
+
+      .section07 .area2 .col .card{
+        height: 500px;
+      }
+
+      .section07 .area2 .col .card::after{
+        top: 2%;
+        left: -8%;
+      }
+
+      .section07 .card .card-icons{
+        display: none;
+      }
+
+      .section07 .area2 .col:nth-last-of-type(1){
+        margin: 0;
+      }
+
+      /* section08輪播按鈕 */
+
+      .section08 .row{
+        width: 80%;
+      }
+
+
+      .section08 .row .col{
+        height: 80px;
+        margin-right: 3%;
+      }
+
+      .section08 .row .col .carousel-btn{
+        font-size: 30px;
+        line-height: 45px;
+      }
+
+      .section08 .row .col:nth-of-type(3),
+      .section08 .row .col:nth-of-type(4),
+      .section08 .row .col:nth-of-type(5),
+      .section08 .row .col:nth-of-type(6){
+        display: block;
+      }
+
+      .section08 .row .col:nth-last-of-type(2){
+        margin-right: 3%;
+      }
+
+      .section08 .row .col:nth-last-of-type(1){
+        margin: 0;
+      }
+
+     /* section09輪播(from the blog) */
+     .section09{
+      margin-bottom: 1rem;
+     }
+     .section09 .row{
+      width: 80%;
+     }
+
+     .section09 .area1{
+      margin-bottom:2rem;
+     }
+
+     .section09 .area1 .col:nth-of-type(2) {
+        justify-content: end;
+      }
+
+      .section09 .area1 .col:nth-of-type(2) .fa-arrow-right{
+        margin-left:2rem;
+      }
+
+
+     .section09 .area1::after{
+      width: 5%;
+     }
+
+     .section09 .area2{
+      flex-flow:row nowrap
+     }
+
+     .section09 .area2 .card{
+      width: 50%;
+      display:flex;
+      flex-flow:row nowrap
+     }
+
+     .section09 .area2 .card:nth-of-type(2){
+        display: flex;
+      }
+
+     .section09 .area2 .card .card-left{
+      width: 55%;
+     }
+
+     .section09 .col-img {
+        width: 90%;
+        height: 300px;
+      }
+
+     .section09 .area2 .card .card-right{
+      width:45%;
+      display: flex;
+      flex-flow:column wrap
+     }
+
+     .section09 .col-text .text-date{
+      font-size: 14px;
+      font-weight: bolder;
+      letter-spacing: 0.5px;
+     }
+
+     .section09 .col-text .text-title {
+        width: 70%;
+        font-weight: bolder;
+        line-height: 1.5;
+      }
+
+      /* footer */
+      
+      .footer .area1{
+        width: 80%;
+        margin: auto;
+        flex-flow:row nowrap;
+        justify-content:space-between
+      }
+
+      
+
+      .footer .area1 .col-title {
+       width: 30%;
+       font-size: 24px;
+      }
+
+      .footer .area1 .col-input{
+        width: 40%;
+        flex-flow:row nowrap
+      }
+
+      .footer .area1 .col-input .btn{
+        width: 30%;
+        border:0;
+      }
+
+      .footer .area1 .col-society{
+        width: 30%;
+        display: flex;
+        justify-content:center;
+      }
+
+      .footer .col-society .society-icon{
+        width: 40px;
+        height: 40px;
+        background: aliceblue;
+        text-align: center;
+        margin-right: 1rem;
+        font-size: 16px;
+        line-height: 40px;
+      }
+
+      .footer .col-society .society-icon:hover{
+        background: linear-gradient(180deg, yellow, rgb(227, 160, 46));
+        cursor: pointer;
+      }
+
+      .footer .area2{
+        width: 80%;
+        margin: auto;
+        flex-flow: row nowrap;
+       }
+
+       .footer .area2 .col{
+        flex-direction: column;
+       }
+
+       .footer .area2 .col::after {
+        top: 14%;
+        left: 28%;
+       }
+
+       .footer .area2 .col:nth-of-type(1):after {
+        top: 17%;
+        left:0;
+       }
+
+       .footer .area2 .col ~ .col {
+        padding-left: 7rem;
+      }
+
+      .footer .area2 .col:nth-of-type(1){
+        margin-bottom: 3rem;
+      }
+
+      .footer .area2 .col .col-text{
+        font-size: 20px;
+        font-weight: bolder;
+        margin-bottom: 2.5rem;
+      }
+
+
+       .footer .area2 .col-icon{
+        display: none;
+       }
+
+       .footer .area2 .col-info{
+        color: white;
+        display:flex;
+        flex-flow:column wrap;
+        line-height: 1.5;
+        font-size: 14px;
+       }
+
+       .footer .area2 .col-info>*{
+        margin-bottom: 1rem;
+       }
+
+       .footer .area3{
+        width: 80%;
+        margin: auto;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+       }
+       
+       .footer .col-copyright{
+        width: 80%;
+        text-align:left;
+       }
+
+       .footer .col-icons{
+        margin-top: 2rem;
+        width: 20%;
+       }
+
+       .footer .col-icons .icon-bankcard{
+        width: 12%;
+       }
+
+       
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- 至頂按鈕 -->
+    <button class="btn toTopBtn"><a href="#"><i class="fa-solid fa-chevron-up"></i></a></button>
+    <!-- pre_nav_bar -->
+    <div class="pre_nav_bar w-100 ">
+      <div class="container-fluid">
+        <div class="row text-white">
+          <div class="col">
+            <div class="col-phone col-items margin-right-2">
+              <div class="phone-icons margin-right-1">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="phone-text">(+00)087 187 487</div>
+            </div>
+            <div class="col-email col-items">
+              <div class="email-icons margin-right-1">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <div class="email-text">cloris222@gmail.com</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="col-compare col-items margin-right-2">
+              <div class="compare-icons margin-right-1">
+                <i class="fa-solid fa-repeat"></i>
+              </div>
+              <div class="compare-text">Compare</div>
+            </div>
+            <div class="col-wishlist col-items">
+              <div class="wishlist-icons margin-right-1">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <div class="wishlist-text">Wishlist</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 導覽列 -->
+    <div class="nav_bar w-100 bg-primary text-white">
+      <div class="container-fluid">
+        <div class="row w-100">
+          <div class="col">
+            <div class="menuicon">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="logo">
+              <a href="#"
+                ><img
+                  src="./images/steamlogo.png"
+                  alt="steam"
+                  title="steam"
+                  class="w-100"
+              /></a>
+            </div>
+          </div>
+          <div class="col">
+              <ul class="menulist text-white">
+                <li>HOME</li>
+                <li>SHOP<i class="fa-solid fa-chevron-down"></i></li>
+                <li>BLOG<i class="fa-solid fa-chevron-down"></i></li>
+                <li>MEDIA<i class="fa-solid fa-chevron-down"></i></li>
+                <li>SHORTCODE<i class="fa-solid fa-chevron-down"></i></li>
+                <li>MORE</li>
+              </ul>
+          </div>
+          <div class="col">
+            <div class="login_icon">
+              <i class="fa-regular fa-user"></i>
+            </div>
+            <div class="login-text text-white margin-right-half">My Account</div>
+            <div class="login-text-icon">
+              <i class="fa-solid fa-chevron-down margin-right-1"></i>
+            </div>
+            <div class="shoppingcart_icon margin-right-half">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <div class="shoppingcart-text text-white">$0.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 搜尋欄 -->
+    <div class="search_bar w-100 ">
+      <div class="container-fluid">
+        <div class="row w-100">
+          <div class="col w-100">
+            <input type="text" placeholder="Search products..." />
+            <div class="search_icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+          <div class="col">
+            <div class="col-item">
+              <div class="item-icon text-gold">
+                <i class="fa-solid fa-hand-fist"></i>
+              </div>
+              <div class="item-text text-white">
+                Special Flat Guarantee
+              </div>
+            </div>
+            <div class="col-item">
+              <div class="item-icon text-gold">
+                <i class="fa-solid fa-sack-dollar"></i>
+              </div>
+              <div class="item-text text-white">
+                Money Back Guarantee
+              </div>
+            </div>
+            <div class="col-item">
+              <div class="item-icon text-gold">
+                <i class="fa-solid fa-bullhorn"></i>
+              </div>
+              <div class="item-text text-white">
+                Free Shipping Worldwide
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- 篩選器 -->
+    <div class="filter_card">
+    <div class="filter w-100  text-white">
+      <div class="container-fluid">
+        <div class="row w-100 ">
+          <div class="col bg-primary">
+            <div class="filter_box ">
+              <p>SELECT CATEGORY</p>
+              <div class="filter_icon">
+                <i class="fa-solid fa-bars"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col bg-primary">
+              <ul class="filter-list text-white">
+                <li class="list-item">Adventure</li>
+                <li class="list-item">
+                  <div class="item-text">Bubble shooter</div>
+                <div class="item-icon"><i class="fa-solid fa-chevron-right"></i></div></li>
+                <li class="list-item">Car racing</li>
+                <li class="list-item">Honor game</li>
+                <li class="list-item">Magicka 2</li>
+                <li class="list-item">Robot game</li>
+                <li class="list-item">Scope game</li>
+                <li class="list-item">Shoot game</li>
+                <li class="list-item">Snack race</li>
+                <li class="list-item">More</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 卡片(read more) -->
+    <div class="section01 w-100 ">
+      <div class="container-fluid">
+        <div class="row w-100">
+          <div class="col">
+            <div class="card w-100">
+              <div class="card_text text-white">
+                <p class="subtitle">SAVE UP TO 20% AND MORE</p>
+                <p class="card_title">
+                  Famous Ultimate<br />
+                  Game Sale
+                </p>
+              </div>
+              <input type="button" value="READ MORE" class="btn" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- 輪播 (deal of the day)-->
+    <div class="section02 w-100 ">
+      <div class="container-fluid">
+        <!-- 標題(Deal of the day) -->
+        <div class="area1 row">
+          <div class="col">
+            <p class="title text-white">Deal Of The Day</p>
+          </div>
+          <div class="col left-right-icons text-white">
+            <i class="fa-solid fa-arrow-left"></i>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+        <!-- 卡片區(行動版*2，電腦版*4) -->
+        <div class="area2 row">
+          <!-- 卡片1 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image3.jpg" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Raiden Shogun</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$200.00</del>
+                  <span class="text-white">$150.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 卡片2 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image1.jpg" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Long Time Lover</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$500.00</del>
+                  <span class="text-white">$400.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 卡片3 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image10.jpg" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Best Partner Paimon</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$500.00</del>
+                  <span class="text-white">$400.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 卡片4 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image5.png" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Alchemist Abedo</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$500.00</del>
+                  <span class="text-white">$400.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 卡片5 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image11.jpg" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>The leader of grass</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$500.00</del>
+                  <span class="text-white">$400.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 滿版卡片(shop now) -->
+    <div class="section03 w-100 ">
+      <div class="container-fluid">
+        <div class="row w-100 bg-black">
+          <div class="col">
+            <i class="fa-solid fa-hand-fist text-gold"></i>
+          </div>
+          <div class="col">
+            <div class="text text-white w-100">
+              <p>
+                Extra $100 flat free lifetime plan 
+                limited time offer
+              </p>
+            </div>
+          </div>
+          <div class="col">
+            <input type="button" value="SHOP NOW" class="btn" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 促銷卡片*2 -->
+    <div class="section04 w-100 ">
+      <div class="container w-100">
+        <div class="area1 row">
+          <div class="col">
+            <div class="text text-white">
+              <p>
+                Discount 20% Off<br />
+                On Clothes
+              </p>
+            </div>
+          </div>
+          <div class="col">
+            <input type="button" value="SHOP NOW" class="btn" />
+          </div>
+        </div>
+        <div class="area2 row">
+          <div class="col">
+            <div class="text text-white">
+              <p class="text-subtitle">Game apps</p>
+              <p class="text-title">FLAT 50%</p>
+            </div>
+          </div>
+          <div class="col">
+            <input type="button" value="SHOP NOW" class="btn" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 卡片(equipment for pro gaming)+輪播 -->
+    <div class="section05 w-100 ">
+      <div class="container w-100">
+        <!-- 卡片 -->
+        <div class="card-area row">
+          <div class="col">
+            <div class="card bg-primary">
+              <p class="card-title text-white">
+                Equipment<br />
+                For Pro<br />
+                Gaming
+              </p>
+              <p class="card-text text-white">
+                I cannot choose the best.<br />
+                The best chooses me.
+              </p>
+              <input type="button" value="SHOP NOW" class="btn" />
+            </div>
+          </div>
+        </div>
+        <div class="carousel-area">
+         <!-- 標題(newest product) -->
+         <div class="area1 row ">
+          <div class="col">
+            <p class="title text-white">Newest Products</p>
+          </div>
+          <div class="col left-right-icons text-white">
+            <i class="fa-solid fa-arrow-left"></i>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+         </div>
+         <!-- 卡片區(行動版*2，電腦版*4) -->
+         <div class="area2 row ">
+          <!-- 卡片1 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image8.jfif" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Kamisato Ayaka</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$101.00</del>
+                  <span class="text-white">$88.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 卡片2 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image9.jpg" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Dancer Nilou</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$101.00</del>
+                  <span class="text-white">$88.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 卡片3 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image8.jfif" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Kamisato Ayaka</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$101.00</del>
+                  <span class="text-white">$88.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 卡片4 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image9.jpg" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Dancer Nilou</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$101.00</del>
+                  <span class="text-white">$88.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+         </div>
+      </div>
+      </div>
+    </div>
+
+    <!--section06 卡片(about our company) -->
+    <div class="section06 w-100 ">
+      <div class="container-fluid">
+        <div class="row bg-primary">
+          <div class="img-area col">
+            <img src="./images/image10.jpg" />
+          </div>
+          <div class="text-area col">
+            <p class="text-title text-white">About our company</p>
+            <p class="text-medium text-white">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              perferendis debitis at cum laudantium fuga provident ullam
+              expedita quisquam.
+            </p>
+            <div class="text-list text-white">
+              <ul>
+                <li>
+                  <i class="fa-solid fa-circle-arrow-right text-list-icon"></i>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-arrow-right text-list-icon"></i>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-arrow-right text-list-icon"></i>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                </li>
+                <li>
+                  <i class="fa-solid fa-circle-arrow-right text-list-icon"></i>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                </li>
+              </ul>
+            </div>
+            <div class="btn-area ">
+              <input type="button" value="SHOP NOW" class="btn" />
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- section07卡片(equipment for pro gaming)+輪播 -->
+    <div class="section07 w-100 ">
+      <div class="container w-100">
+        <!-- 卡片 -->
+        <div class="card-area row">
+          <div class="col">
+            <div class="card bg-primary">
+              <p class="card-title text-white">
+                Equipment<br />
+                For Pro<br />
+                Gaming
+              </p>
+              <p class="card-text text-white">
+                I cannot choose the best.<br />
+                The best chooses me.
+              </p>
+              <input type="button" value="SHOP NOW" class="btn" />
+            </div>
+          </div>
+        </div>
+        <div class="carousel-area">
+        <!-- 標題(Featured product) -->
+        <div class="area1 row ">
+          <div class="col">
+            <p class="title text-white">Featured Products</p>
+          </div>
+          <div class="col left-right-icons text-white">
+            <i class="fa-solid fa-arrow-left"></i>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+        <!-- 卡片區(行動版*2，電腦版*4) -->
+        <div class="area2 row ">
+          <!-- 卡片1 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image11.jpg" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Grass Nahida</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$95.00</del>
+                  <span class="text-white">$90.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 卡片2 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image12.jpg" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Yae Miko</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$500.00</del>
+                  <span class="text-white">$400.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 卡片3 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image11.jpg" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Grass Nahida</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$95.00</del>
+                  <span class="text-white">$90.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 卡片4 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-img">
+                <img src="./images/image12.jpg" />
+              </div>
+              <div class="card-icons">
+                <div class="bg_icon icon_bag">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="bg_icon icon_eye">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="bg_icon icon_heart">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+                <div class="bg_icon icon_return">
+                  <i class="fa-solid fa-repeat"></i>
+                </div>
+              </div>
+              <div class="card-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star text-gray"></i>
+              </div>
+              <div class="card-text">
+                <div class="card-text-title text-white">
+                  <p>Yae Miko</p>
+                </div>
+                <div class="card-text-price">
+                  <del class="text-gray">$500.00</del>
+                  <span class="text-white">$400.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <!-- section08輪播按鈕 -->
+    <div class="section08 w-100 ">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <input type="button" value="Retros" class="carousel-btn" />
+          </div>
+          <div class="col">
+            <input type="button" value="Quality" class="carousel-btn" />
+          </div>
+          <div class="col">
+            <input type="button" value="Premium" class="carousel-btn" />
+          </div>
+          <div class="col">
+            <input type="button" value="Studios" class="carousel-btn" />
+          </div>
+          <div class="col">
+            <input type="button" value="URBANS" class="carousel-btn" />
+          </div>
+          <div class="col">
+            <input type="button" value="Retros" class="carousel-btn" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- section09輪播(from the blog) -->
+    <div class="section09 w-100 ">
+      <div class="container-fluid">
+        <!-- 標題(from the blog) -->
+        <div class="area1 row">
+          <div class="col">
+            <p class="title text-white">From the blog</p>
+          </div>
+          <div class="col left-right-icons text-white">
+            <i class="fa-solid fa-arrow-left"></i>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+        <div class="area2 row">
+           <div class="card">
+            <div class="card-left">
+              <div class="col-img">
+            <img src="./images/image13.jpg" />
+             </div>
+            </div>
+             <div class="card-right">
+              <div class="col-text text-white">
+                  <p class="text-date">December 18,2022</p>
+                  <p class="text-title">Welcome to the world of Genshin Impact</p>
+              </div>
+             <div class="col-btn">
+            <input type="button" value="Read More" class="btn" />
+             </div>
+            </div>
+           </div>
+           <div class="card">
+            <div class="card-left">
+              <div class="col-img">
+                <img src="./images/image13.jpg" />
+              </div>
+          </div>
+            <div class="card-right">
+              <div class="col-text text-white">
+                <p class="text-date">December 25,2022</p>
+                <p class="text-title">Merry christmas and Haappy New Year</p>
+              </div>
+              <div class="col-btn">
+                <input type="button" value="Read More" class="btn" />
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="footer w-100 bg-primary">
+      <div class="container-fluid">
+        <div class="area1 row">
+          <div class="col-title col">
+            <i class="fa-regular fa-envelope title-icon text-white"></i>
+            <div class="title-text text-white">
+              Sign Up Newslatter
+            </div>
+          </div>
+          <div class="col-input col">
+            <input type="text" placeholder="Your email address" />
+            <input type="button" value="SIGN UP" class="btn" />
+          </div>
+          <div class="col-society col">
+            <div class="society-icon">
+              <i class="fa-brands fa-facebook"></i>
+            </div>
+            <div class="society-icon">
+              <i class="fa-brands fa-twitter"></i>
+            </div>
+            <div class="society-icon">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <div class="society-icon">
+              <i class="fa-solid fa-wifi"></i>
+            </div>
+          </div>
+        </div>
+        <div class="area2 row">
+          <div class="col">
+            <div class="col-text text-white">Contact Us</div>
+            <div class="col-icon text-white">
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="col-info">
+              <div class="info-address">502 New Design Str, Melbourne, San Francisco, CA 94110, United States of America​ Australia</div>
+              <div class="info-phone">(+00)087 187 487</div>
+              <div class="info-mail">cloris222@gmail.com</div>
+            </div>
+
+          </div>
+          <div class="col">
+            <div class="col-text text-white">Our Services</div>
+            <div class="col-icon text-white">
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="col-info">
+              <div class="info-1">Your Account</div>
+              <div class="info-2">Return Center</div>
+              <div class="info-3">Purchase</div>
+              <div class="info-4">App Download</div>
+              <div class="info-5">Latest News</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="col-text text-white">Information</div>
+            <div class="col-icon text-white">
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="col-info">
+              <div class="info-1">About Us</div>
+              <div class="info-2">Contact Us</div>
+              <div class="info-3">Terms & Conditions</div>
+              <div class="info-4">Returns & Exchanges</div>
+              <div class="info-5">Shipping & Delivery</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="col-text text-white">My Account</div>
+            <div class="col-icon text-white">
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="col-info">
+              <div class="info-1">Order History</div>
+              <div class="info-2">Wishlist</div>
+              <div class="info-3">Contact Us</div>
+              <div class="info-4">About Us</div>
+              <div class="info-5">Our Work</div>
+            </div>
+          </div>
+        </div>
+        <div class="area3 row ">
+          <div class="col-copyright text-white">
+            Copyright © 2022 YungChien. All rights reserved.
+          </div>
+          <div class="col-icons">
+            <div class="icon-bankcard">
+              <img src="./images/imagebank1.jpeg">
+            </div>
+            <div class="icon-bankcard">
+              <img src="./images/imagebank2.png">
+            </div>
+            <div class="icon-bankcard">
+              <img src="./images/imagebank3.jpeg">
+            </div>
+            <div class="icon-bankcard">
+              <img src="./images/imagebank4.png">
+            </div>
+            <div class="icon-bankcard">
+              <img src="./images/imagebank1.jpeg">
+            </div>
+            <div class="icon-bankcard">
+              <img src="./images/imagebank2.png">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js' integrity='sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==' crossorigin='anonymous'></script>
+ <script src="./umd/gsap.js"></script>
+ <script src="./umd/ScrollTrigger.js"></script>
+ <script>
+  // JQuery
+    // $(window).resize(function() {
+    //     const wdth=$(window).width();
+    //     console.log(wdth)
+
+    //     if(wdth>=768 && wdth<1200){
+    //     let addleft = (wdth - 768) / 64 * 4
+    //     $('.card-icons').css('left', ` ${84 + addleft}%`)
+    //   }
+    //   console.log($('.card-icons').css('left'))
+    // });
+
+  //gsap
+  gsap.registerPlugin(ScrollTrigger);
+  const tl = gsap.timeline({
+    scrollTrigger:{
+      trigger:'.nav_bar',
+      start:'bottom 10%',
+      end:'top top',
+      scrub:true,
+      toggleActions:'play none reverse none',
+      // markers:true
+    }
+  })
+
+  tl
+    .to('.pre_nav_bar',{
+      y:-1000
+    })
+    .to('.nav_bar',{
+      y:-50
+    })
+    
+  </script>
+  </body>
+</html>
+      
